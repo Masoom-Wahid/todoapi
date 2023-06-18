@@ -1,0 +1,140 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html{
+    color: #eb796f;
+}
+
+.center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.circle-container{
+    border: 1px solid black;
+    border-radius: 50%;
+    width: 450px;
+    height: 450px;
+}
+.timer-container{
+    width:330px;
+    height: 200px;
+}
+.timer{
+    width: 400px;
+    height: 100px;
+}
+
+.timer div{
+    font-size: 70px;
+    font-weight: 100;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 10px 0 10px;
+
+}
+
+
+.timer .colon{
+    background-color: transparent;
+    width: 10px;
+    margin-left: 0;
+    margin-right: 0;
+    padding-bottom: 15px;
+    color: #088b8b;
+}
+.button-div{
+    margin-top: 10px;
+}
+.button{
+    padding-right: 50px;
+    padding-top: 10px;
+    padding-left: 50px;
+    padding-bottom: 10px;
+    margin-left: 5px;
+    background-color: #eb796f;
+    color: black;
+    border: none;
+    border-radius: 5%;
+    cursor: pointer;
+}
+.button-back{
+    padding-right: 50px;
+    padding-top: 10px;
+    padding-left: 50px;
+    padding-bottom: 10px;
+    margin-left: 5px;
+    background-color:red;
+    border: none;
+    border-radius: 5%;
+    cursor: pointer;
+}
+
+
+@media only screen and (device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) {
+
+    .circle-container{
+        background-color: black;
+        border: 1px solid white;
+        color: white;
+        border-radius: 50%;
+        width: 400px;
+        height: 400px;
+        margin-top: 10px;
+        
+    }    
+    .button-div{
+        margin-top: 50px;
+        margin-right: 10px;
+        margin-left: 10px;
+    }
+
+}
+
+@media only screen and (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) {
+    .circle-container{
+        background-color: black;
+        border: 1px solid white;
+        color: white;
+        border-radius: 50%;
+        width: 400px;
+        height: 400px;
+        margin-top: 10px;
+        
+    }    
+    .button-div{
+        margin-top: 50px;
+        margin-right: 10px;
+        margin-left: 10px;
+    }
+
+}
+
+@media only screen and (device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) {
+    .circle-container{
+        background-color: black;
+        border: 1px solid white;
+        color: white;
+        border-radius: 50%;
+        width: 400px;
+        height: 400px;
+        margin-top: 10px;
+        
+    }    
+    .button-div{
+        margin-top: 50px;
+        margin-right: 10px;
+        margin-left: 10px;
+    }
+
+
+}

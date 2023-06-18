@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
+    <title>Register</title>
+    <script>
+    function getToken(name) {
+       var cookieValue = null;
+       if (document.cookie && document.cookie !== '') {
+           var cookies = document.cookie.split(';');
+           for (var i = 0; i < cookies.length; i++) {
+               var cookie = cookies[i].trim();
+               // Does this cookie string begin with the name we want?
+               if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                   cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                   break;
+               }
+           }
+       }
+       return cookieValue;
+   }
+   var csrftoken = getToken('csrftoken')
+    </script>
+</head>
+<body>
+    <script type="text/javascript" src="../eel.js"></script>
+        <div class="container">
+            <div class="header-bar">
+                <h1 id="main-name">Register</h1>
+                <a href="task.html">&#x25c0;Back</a>
+            </div>
+            <div class="card-body">
+                <p style="color:red" class="hidden" id="nonmatch">Ur Passwords Do Not Match Try Again</p>
+                <p style="color:red" class="hidden" id="error">Something Went Wrong Try Again</p>
+                <form method="POST" id="form">
+                    <input  style="margin-bottom: 15px;margin-top: 30px;" type="text" placeholder="Username...." id="username">
+                    <input   style="margin-bottom: 10px;" type="text" placeholder="Email ..." id="email">  
+                    <input   style="margin-bottom: 10px;" type="password" placeholder="Password ..." id="password">
+                    <input   style="margin-bottom: 10px;" type="password" placeholder="Confirm Password ..." id="confirmpassword">
+                    <input class="button" type="submit" value="Register">
+                </form>
+                <form method="POST" id="veri" class="hidden" >
+                    <input  style="margin-bottom: 15px;margin-top: 30px;" type="text" value="" placeholder="Enter Your Verification Code...." id="verify">
+                    <input class="button" type="submit" value="Register">
+                </form>
+                <div class="reglink">
+                    <p >Already Registered? <a href="login.html">Login</a></p>
+                </div>
+                
+            </div>
+        </div>
+        <script src="js/register.js"></script>
+</body>
+</html>

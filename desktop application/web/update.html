@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
+    <title>Update</title>
+    <script>
+         	function getToken(name) {
+		    var cookieValue = null;
+		    if (document.cookie && document.cookie !== '') {
+		        var cookies = document.cookie.split(';');
+		        for (var i = 0; i < cookies.length; i++) {
+		            var cookie = cookies[i].trim();
+		            // Does this cookie string begin with the name we want?
+		            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+		                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+		                break;
+		            }
+		        }
+		    }
+		    return cookieValue;
+		}
+		var csrftoken = getToken('csrftoken')
+    </script>
+</head>
+<body>  
+    <script type="text/javascript" src="../eel.js"></script>
+        <div class="container">
+            <div class="header-bar">
+                <h1>Update Ur Task</h1>
+                <a href="task.html">&#x25c0;Back</a>
+            </div>
+            <div class="card-body">
+                <p style="color:red" class="hidden" id="error">Something Went Wrong Try Again</p>
+                <form method="POST" id="form">
+                    <label >Task Name:</label>
+                    <input  style="margin-bottom: 15px;"  id="taskname" type="text" placeholder="Task's Name....">
+                    <label >Task Description:</label>
+                    <input   style="margin-bottom: 15px;margin-top: 5px;" type="text" id="description" placeholder="Description ...">
+                    <br>
+                    <input class="button" type="submit" value="Update">
+                </form>
+            </div>
+        </div>
+  <script src="js/update.js" ></script>
+</body>
+</html>
+
+
+
+
+
+
+

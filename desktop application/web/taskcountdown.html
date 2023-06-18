@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/taskcountdown.css">
+    <title>TaskCountDown</title>
+    <script>
+        function getToken(name) {
+       var cookieValue = null;
+       if (document.cookie && document.cookie !== '') {
+           var cookies = document.cookie.split(';');
+           for (var i = 0; i < cookies.length; i++) {
+               var cookie = cookies[i].trim();
+               // Does this cookie string begin with the name we want?
+               if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                   cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                   break;
+               }
+           }
+       }
+       return cookieValue;
+   }
+   var csrftoken = getToken('csrftoken')
+    </script>
+</head>
+<body>
+    <h1 class="tasktitle center" style="margin-bottom: 5px;margin-top: 5px;"></h1>
+    <br>
+    <div class="main-container center">
+        <div class="circle-container center">
+            <div class="timer-container center">
+                <div class="timer center">
+                    <div id="hours">00</div>
+                    <div class="colon">:</div>
+                    <div id="minutes">00</div>
+                    <div class="colon">:</div>
+                    <div id="seconds">00</div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <div class=" button-div center">   
+        <button class="button" id="startbutton">Start</button>
+        <button class="button" id="stopbtn">Save/Pause</button>
+        <a href="task.html"><button class="button-back">Back</button></a>
+    </div>
+ 
+    <script src="js/taskcountdown.js" ></script>
+</body>
+</html>
