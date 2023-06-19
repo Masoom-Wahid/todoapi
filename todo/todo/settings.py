@@ -1,6 +1,6 @@
 from pathlib import Path
 from django.conf import settings
-from secrets.py import secret_key,EMAIL_HOST_USER,EMAIL_HOST_PASSWORD
+from .secrets import secret_key,EMAIL_HOST_USER,EMAIL_HOST_PASSWORD
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 

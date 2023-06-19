@@ -12,7 +12,7 @@ media/
 staticfiles/
 
 # Ignore the secret key file
-secret_key.txt
+secrets.py
 
 # Ignore database files
 db.sqlite3
@@ -24,3 +24,6 @@ db.sqlite3
 # Ignore log files
 *.log
 ```
+
+#ignore the settings.py
+settings.py
