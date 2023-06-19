@@ -1,4 +1,9 @@
-#This TodoList Was Made By Django And HTML/CSS and Js Only And No Front-End Framework
+![4](https://github.com/Masoom-Wahid/todoapi/assets/121297100/f66909ad-7864-4730-840b-32e54df083e2)
+![3](https://gi![5](https://github.com/Masoom-Wahid/todoapi/assets/121297100/2673de7f-8c51-4349-839c-7961e116fe9a)
+![5](https://github.com/Masoom-Wahid/todoapi/assets/121297100/db74f54e-68a2-43d7-8b37-9748b37571e7)
+
+
+#This TodoList Was Made By Django And HTML/CSS and Js Only And No Front-End Framework, U Can Have Tasks For Each Day and other features Like Priority , TaskCountdown
 #To Start Using This U should start with making a virtual env, U Can Make One By Writing In the Main Directory :
 ```
 python -m venv venv
