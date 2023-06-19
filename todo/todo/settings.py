@@ -1,5 +1,6 @@
 from pathlib import Path
 from django.conf import settings
+from secrets.py import secret_key,EMAIL_HOST_USER,EMAIL_HOST_PASSWORD
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -8,7 +9,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-y*2j6(d4xwg8cub$mp7&bx+g*6l55yltqi$c&^d7wo5j=r&m$t"
+SECRET_KEY = secret_key
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -165,7 +166,7 @@ SIMPLE_JWT = {
 
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'todolist1729@gmail.com'
-EMAIL_HOST_PASSWORD = 'eqasylrzorxamacj'
+EMAIL_HOST_USER = EMAIL_HOST_USER
+EMAIL_HOST_PASSWORD = EMAIL_HOST_PASSWORD
 EMAIL_USE_TLS = True
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
