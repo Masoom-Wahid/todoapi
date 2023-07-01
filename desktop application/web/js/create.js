@@ -33,7 +33,7 @@ form.addEventListener('submit',e =>{
     })
     .then((data) => {
         if (data == 'Created'){
-            location.replace('/task.html')
+            location.replace('task.html')
         }else if(data == 'Error'){
             error.classList.remove('hidden')
         }else{
@@ -66,14 +66,14 @@ form.addEventListener('submit',e =>{
                     })
                     .then((data) => {
                         if (data == 'Created'){
-                            location.replace('/task.html')
+                            location.replace('task.html')
                         }else{
                             error.classList.remove('hidden')
                         } 
                     })
                 }else{
                     window.alert('Login Expired');
-                    location.replace('/login.html')   
+                    location.replace('login.html')   
                 }
 
             })   

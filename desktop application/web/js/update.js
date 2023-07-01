@@ -24,7 +24,7 @@ if ((sessionStorage.getItem('taskname') && sessionStorage.getItem('description')
         })
         .then((data) => {
             if (data == 'Updated'){
-                location.replace('/task.html')
+                location.replace('task.html')
             }else if(data == 'Error'){
                 error.classList.remove('hidden')
             }else{
@@ -57,14 +57,14 @@ if ((sessionStorage.getItem('taskname') && sessionStorage.getItem('description')
                         })
                         .then((data) => {
                             if (data == 'Updated'){
-                                location.replace('/task.html')
+                                location.replace('task.html')
                             }else{
                                 error.classList.remove('hidden')
                             } 
                         })
                     }else{
                         window.alert('Login Expired');
-                        location.replace('/login.html')   
+                        location.replace('login.html')   
                     }
     
                 })   
@@ -75,6 +75,6 @@ if ((sessionStorage.getItem('taskname') && sessionStorage.getItem('description')
 
 
 }else{
-    location.replace('/index.html')
+    location.replace('index.html')
 }
 

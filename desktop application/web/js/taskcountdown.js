@@ -38,7 +38,7 @@ if ((sessionStorage.getItem('taskname')) && (sessionStorage.getItem('task_id')) 
                         'X-CSRFToken':csrftoken,
                         'Authorization' : `Bearer ${localStorage.getItem('access')}`
                     }, 
-                    body:JSON.stringify({'id':sessionStorage.getItem('task_id'),'action':'edit'})
+                    body:JSON.stringify({'id':sessionStorage.getItem('task_id'),'action':'updatetime','time':sessionStorage.getItem('time')})
                 })
                 .then((response) => {
                    return response.json();
@@ -72,7 +72,7 @@ if ((sessionStorage.getItem('taskname')) && (sessionStorage.getItem('task_id')) 
                                         'X-CSRFToken':csrftoken,
                                         'Authorization': `Bearer ${localStorage.getItem('access')}`
                                     },
-                                    body:JSON.stringify({'id':sessionStorage.getItem('task_id'),'action':'edit'})
+                                    body:JSON.stringify({'id':sessionStorage.getItem('task_id'),'action':'updatetime'})
                                 })
                                 .then((response) => {
                                    return response.json();
@@ -84,7 +84,7 @@ if ((sessionStorage.getItem('taskname')) && (sessionStorage.getItem('task_id')) 
                                 })
                             }else{
                                 window.alert('Login Expired');
-                                location.replace('/login.html')   
+                                location.replace('login.html')   
                             }
                         })   
                     }
@@ -104,6 +104,22 @@ if ((sessionStorage.getItem('taskname')) && (sessionStorage.getItem('task_id')) 
         var hour_done = h.innerHTML
         var  minutes_done = m.innerHTML
         var seconds_done = s.innerHTML
+        edit_time = sessionStorage.getItem('time')
+        let hourDone = parseInt(h.innerHTML);
+        let minutesDone = parseInt(m.innerHTML);
+        let secondsDone = parseInt(s.innerHTML)
+        let [originalHours, originalMinutes, originalSeconds] = edit_time.split(':').map(num => parseInt(num));
+
+        let hoursDiff = hourDone - originalHours;
+        let minutesDiff = minutesDone - originalMinutes;
+        let secondsDiff = secondsDone - originalSeconds;
+
+        let totalTime = 0; // This should be stored in a variable that persists between tasks
+        totalTime += hoursDiff * 3600; // Convert hours to seconds
+        totalTime += minutesDiff * 60; // Convert minutes to seconds
+        totalTime += secondsDiff;
+
+        totalTime =  Math.abs(totalTime)
 
         url = 'http://127.0.0.1:8000/api/updatetime/'
         fetch(url, {
@@ -113,7 +129,7 @@ if ((sessionStorage.getItem('taskname')) && (sessionStorage.getItem('task_id')) 
                 'X-CSRFToken':csrftoken,
                 'Authorization' : `Bearer ${localStorage.getItem('access')}`
             },
-            body:JSON.stringify({'id':sessionStorage.getItem('task_id'),'hour':hour_done,'minutes':minutes_done,'seconds':seconds_done})
+            body:JSON.stringify({'id':sessionStorage.getItem('task_id'),'hour':hour_done,'minutes':minutes_done,'seconds':seconds_done,'activity_time':totalTime})
         })
         .then((response) => {
            return response.json();
@@ -145,7 +161,7 @@ if ((sessionStorage.getItem('taskname')) && (sessionStorage.getItem('task_id')) 
                                 'X-CSRFToken':csrftoken,
                                 'Authorization': `Bearer ${localStorage.getItem('access')}`
                             },
-                            body:JSON.stringify({'id':sessionStorage.getItem('task_id'),'hour':hour_done,'minutes':minutes_done,'seconds':seconds_done})
+                            body:JSON.stringify({'id':sessionStorage.getItem('task_id'),'hour':hour_done,'minutes':minutes_done,'seconds':seconds_done,'activity_time':totalTime})
                         })
                         .then((response) => {
                            return response.json();
@@ -157,7 +173,7 @@ if ((sessionStorage.getItem('taskname')) && (sessionStorage.getItem('task_id')) 
                         })
                     }else{
                         window.alert('Login Expired');
-                        location.replace('/login.html')   
+                        location.replace('login.html')   
                     }
     
                 })   

@@ -2,8 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta name="description"
-        content="This is to do list implemented using Django by Dennis Ivy who is a full stack web developer.">
+    <meta name="description">
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>To Do Items</title>
@@ -58,7 +57,7 @@
     
 </head>
 
-<body>
+<body id="main_body">
     <nav class="unauthenticatedbanner hidden">
         <h1 style="color:red">U Are Not Logged In Ur Progress Will Not Be Saved <a class="nav-login" href="login.html">Login</a></h1>
     </nav>
@@ -66,8 +65,10 @@
         <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
 <div class="header-bar">
     <div>
-        <p id="welcome" class="welcome">Hello</p>
+        <p id="welcome" class="welcome" style="color:white;">Hello</p>
         <h3 id="trophies" style="margin-top: none;"></h3>
+        <h4 id="activity_time"></h4>
+        <h4 id="streak"></h4>
         <h3 style="margin:0">You have <i id="task_count"></i> incomplete tasks</h3>
     </div>
 
@@ -87,7 +88,7 @@
     <div>
         <form method="GET" style="display: flex;" id="dateform">
             <input type="date" min="06-16-2023"  id="date" class="date" style="border: solid 1px black; padding: 12px 12px 12px 12px; border-radius: 3%;" onload=getdate()>
-            <input type="submit" class="button" value="Search">
+            <input type="submit" class="button" value="Search" id="datebutton">
         </form>
     </div>
     <a   class="delete-link  hidden" id="refresh-icon" onclick="location.reload()">&#215;</a>

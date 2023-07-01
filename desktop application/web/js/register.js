@@ -77,7 +77,7 @@ form.addEventListener('submit', e => {
                                             localStorage.setItem('access',data['access'])
                                             localStorage.setItem('refresh',data['refresh'])
                                             window.alert('Signed Up in succesfully')
-                                            location.replace('/task.html')
+                                            location.replace('task.html')
                                         }
                                     });
                                 }
