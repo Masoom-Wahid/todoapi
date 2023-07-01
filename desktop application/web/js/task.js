@@ -17,7 +17,6 @@ if (localStorage.getItem('access') == null && localStorage.getItem('refresh') ==
             body:JSON.stringify({'date':sessionStorage.getItem('date')})
         })
         const response = await request.json();
-        console.log(response);
         var today = true;
         const currentDate = new Date();
         const givenDateString = sessionStorage.getItem('date');
@@ -27,7 +26,6 @@ if (localStorage.getItem('access') == null && localStorage.getItem('refresh') ==
         const currentTimestamp = currentDate.getTime();
         
         if (givenTimestamp == currentTimestamp){
-            console.log('now we are talking');
         }
         const differenceInMs = currentTimestamp - givenTimestamp;
         
@@ -41,9 +39,8 @@ if (localStorage.getItem('access') == null && localStorage.getItem('refresh') ==
         //   var not_today = true
         // }
          
-        console.log(today)
+
         if (today == false){
-            console.log('hi');
             var headerBar = document.getElementsByClassName('header-bar')[0];
             headerBar.style.background = "linear-gradient(90deg, #000000 0%, #000000     50%, #000000 100%)";
             headerBar.style.color = 'white'

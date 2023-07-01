@@ -136,7 +136,7 @@ if ((sessionStorage.getItem('taskname')) && (sessionStorage.getItem('task_id')) 
         })
         .then((data) => {
             if (data == 'Updated'){
-                //console.log('done');
+                
                 sessionStorage.setItem('time',`${hour_done}:${minutes_done}:${seconds_done}`)
             }else{
                 refresh_url = 'http://127.0.0.1:8000/api/token/refresh/'
@@ -168,7 +168,7 @@ if ((sessionStorage.getItem('taskname')) && (sessionStorage.getItem('task_id')) 
                         })
                         .then((data) => {
                             if (data == 'Updated'){
-                                //console.log('done');
+                               
                             } 
                         })
                     }else{
