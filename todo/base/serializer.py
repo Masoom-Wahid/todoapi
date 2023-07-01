@@ -17,32 +17,33 @@ class TasksSerializer(ModelSerializer):
     def count_streak(self, instance):
         class MyException(Exception):
             pass
-
-        user = self.context['user']
-        today = date.today()
-        date_obj = Date.objects.get(date=today)
-        streak = 0
-        stop = False
-        while not stop:
-            tasks_completed = False
-            try:
-                tasks_that_day = Tasks.objects.filter(user=user, date=date_obj)
-                for task in tasks_that_day:
-                    if task.complete:
-                        tasks_completed = True
-                        streak += 1
-                        today -= timedelta(days=1)
-                        date_obj = Date.objects.get(date=today)
-                        break
-                    else:
-                        continue 
-                else: 
-                    if not tasks_completed:
-                        break 
-            except MyException as e:
-                print(e)
-                stop = True
-
+        try:
+            user = self.context['user']
+            today = date.today()
+            date_obj = Date.objects.get(date=today)
+            streak = 0
+            stop = False
+            while not stop:
+                tasks_completed = False
+                try:
+                    tasks_that_day = Tasks.objects.filter(user=user, date=date_obj)
+                    for task in tasks_that_day:
+                        if task.complete:
+                            tasks_completed = True
+                            streak += 1
+                            today -= timedelta(days=1)
+                            date_obj = Date.objects.get(date=today)
+                            break
+                        else:
+                            continue 
+                    else: 
+                        if not tasks_completed:
+                            break 
+                except MyException as e:
+                    print(e)
+                    stop = True
+        except:
+            pass            
         return streak
 
     def count_activity(self,instance):
