@@ -10,9 +10,6 @@ class Date(models.Model):
 
     def __str__(self):
         return str(self.date)
-
-
-
 class Tasks(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)
     name = models.CharField(max_length=100,blank=False)
@@ -29,7 +26,15 @@ class Tasks(models.Model):
     class Meta:
         ordering=['complete','priority']
 
-   
+class DateActivity(models.Model):
+    user = models.ForeignKey(User,on_delete=models.CASCADE,blank=False)
+    date = date = models.ForeignKey(Date, on_delete=models.CASCADE,blank=False)
+    activity = models.TimeField()
+
+    def __str__(self):
+        return f"{self.user} + {self.date} + {self.activity}"
+
+
 
 # class Tasks(models.Model):
 #     user = models.ForeignKey(User,on_delete=models.CASCADE)

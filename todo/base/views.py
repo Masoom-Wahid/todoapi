@@ -3,7 +3,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.decorators import api_view,permission_classes
 from rest_framework.permissions import IsAuthenticated
-from .models import Tasks,Date
+from .models import Tasks,Date,DateActivity
 from .serializer import TasksSerializer,SearchSerializer
 from django.contrib.auth.models import User
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
@@ -16,7 +16,7 @@ from django.template.loader import render_to_string
 from .permissions import IsOwner
 from .forms import PositionForm
 from django.db.models import Q
-from datetime import time
+from datetime import time,timedelta,datetime
 
 
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
@@ -51,9 +51,13 @@ def ListTasks(request):
     except:
         date = Date.objects.create(date=request.data['date'])        
     user = request.user
+    try:
+        activity_time = DateActivity.objects.get(user=request.user,date=date).activity
+    except:
+        activity_time = None    
     trophy_task = Tasks.objects.filter(user=user)
     tasks = Tasks.objects.filter(user=user,date=date)
-    serializer = TasksSerializer(tasks,many=True,context={'tasks':tasks,'trophy_task':trophy_task})
+    serializer = TasksSerializer(tasks,many=True,context={'tasks':tasks,'trophy_task':trophy_task,'activity_time':activity_time,'user':user})
     return Response(serializer.data)
 
 @api_view(["POST"])
@@ -148,12 +152,32 @@ def edittask(request):
         else:
             task.complete = False
             task.save() 
+    elif action == 'updatetime':
+        task.time = time(hour=int(0),minute=int(0),second=int(0))
+        task.complete = True
+        duration_time = request.data['time'].split(':')
+        try:
+            activity_counter = DateActivity.objects.get(user=task.user,date=task.date)
+            activity_time = activity_counter.activity
+
+            duration = timedelta(hours=int(duration_time[0]),minutes=int(duration_time[1]),seconds=int(duration_time[2]))
+
+            combined_time = datetime.combine(datetime.now().date(), activity_time) + duration
+
+            activity_counter.activity = combined_time.time()
+            activity_counter.save()
+        except:
+            DateActivity.objects.create(user=task.user,
+                                    date=task.date,
+                                    activity = time(hour=int(duration_time[0]),minute=int(duration_time[1]),second=int(duration_time[2]))
+                                    )   
+
+        task.save()
     elif action == 'update':
             serializer = TasksSerializer(task,many=False)
             return Response(serializer.data)
     elif action == 'delete':
         task.delete()
-        
     return Response('Done',status=200)        
 
 @api_view(["POST"])
@@ -181,8 +205,26 @@ def update(request):
 @api_view(["POST"])
 @permission_classes([IsOwner])
 def update_timer(request):
-    print(request.data)
     task = Tasks.objects.get(id=request.data['id'])
+    duration_time  = timedelta(seconds=int(request.data['activity_time']))
+    hours, remainder = divmod(duration_time.seconds, 3600)
+    minutes, seconds = divmod(remainder, 60)
+    duration = timedelta(hours=hours,minutes=minutes,seconds=seconds)
+
+
+    try:
+        activity_counter=DateActivity.objects.get(user=task.user,date=task.date)
+        activity_time = activity_counter.activity
+
+        combined_time = datetime.combine(datetime.now().date(), activity_time) + duration
+
+        activity_counter.activity = combined_time.time()
+        activity_counter.save()
+    except:
+        DateActivity.objects.create(user=task.user,
+                                    date=task.date,
+                                    activity = time(hour=int(hours),minute=int(minutes),second=int(seconds))
+                                    )    
     task.time = time(hour=int(request.data['hour']),minute=int(request.data['minutes']),second=int(request.data['seconds']))
     task.save()
     return Response('Updated',status=200)
