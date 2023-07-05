@@ -4,7 +4,65 @@ welcome = document.getElementById('welcome')
 
 if (localStorage.getItem('access') == null && localStorage.getItem('refresh') ==  null){
     document.getElementsByClassName("unauthenticatedbanner")[0].classList.remove('hidden')
-    document.getElementById('dateform').classList.add('hidden')
+    // document.getElementById('dateform').classList.add('hidden')
+    var headerBar = document.getElementsByClassName('header-bar')[0];
+    // headerBar.style.background = "linear-gradient(45deg, rgba(0, 139, 0, 0.7) 0%, rgba(10, 158, 10, 0.7) 20%, rgba(30, 255, 30, 0.7) 50%, rgba(108, 205, 108, 0.7) 75%, rgba(65, 225, 65, 0.7) 100%)";
+    document.getElementById("welcome").innerHTML = `Hello Stranger`
+    document.getElementById('task_count').innerHTML = '3'
+    document.getElementById('activity_time').innerHTML = `Activity Today : 03:00:00`
+    document.getElementById('streak').innerHTML = `Streak :10&#x1F451;`
+    document.getElementById('trophies').innerHTML = `20&#127942;-50&#129351;`
+    const main_body = document.getElementById('main_body')
+    const element = main_body.getElementsByTagName('*');
+    for(let i = 0; i < element.length; i++) {
+        if (element[i].id != "nav-login" && element[i].id != "authbtn" ){
+            element[i].disabled = true;
+            element[i].setAttribute('href', '#');
+        }
+    }
+    taskbox[0].innerHTML += `    <div class="task-wrapper" data-position="{{task.pk}}">
+                        <div class="task-title">
+                            <div class="task-complete-icon edit-icon"></div>
+                            <i><s><a href="#">Example 1</a></s></i>
+                        </div>
+                        <div class="task-controls">
+                            <a class="delete-link edit-icon">&#215;</a>
+                            <span class="handle edit-icon">&#129351;</span>
+                        </div>
+                    </div>`
+                        
+    taskbox[0].innerHTML += `    <div class="task-wrapper">
+    <div class="task-title">
+        <div class="task-complete-icon "></div>
+        <i><s><a href="#">Example 2</a></s></i>
+    </div>
+    <div class="task-controls">
+        <a class="delete-link ">&#215;</a>
+        <a><span class="handle">&#127942;</span></a>
+    </div>
+</div>`
+taskbox[0].innerHTML += `    <div class="task-wrapper">
+                            <div class="task-title">
+                                <div class="edit-icon">&#128681;</div>
+                                <a href=
+                                "#" >Example 3</a> 
+                            </div>
+                            <div class="task-controls">
+                                <a class="delete-link edit-icon">&#215;</a>
+                                <span class="handle edit-icon">&#x2713;</span>
+                            </div>
+                        </div>`
+                            taskbox[0].innerHTML += `    <div class="task-wrapper">
+                            <div class="task-title">
+                            <div class=" edit-icon">&#127988;</div>
+                                <a class="edit-icon">Example 4 (00:30:00 left)</a> 
+                            </div>
+                            <div class="task-controls">
+                                <a class="delete-link edit-icon">&#215;</a>
+                                <a href="#"><span class="handle">&#128336;</span></a>
+                            </div>
+                        </div>`
+                        
 }else{
     access_url = 'http://127.0.0.1:8000/api/gettasks/'
     async function DataRequest() {
@@ -189,7 +247,7 @@ if (localStorage.getItem('access') == null && localStorage.getItem('refresh') ==
             welcome.innerHTML = `Welcome Back ${localStorage.getItem('user')}`
             if (response.length == 0){
                 document.getElementById('task_count').innerHTML = `0`
-                document.getElementById('trophies').innerHTML = `0&#127942;-0&#129351;`
+                document.getElementById('trophies').innerHTML = `&#127942;-&#129351;`
 
             }else{
                 document.getElementById('task_count').innerHTML = `${response[0]['count_task']}`
@@ -315,34 +373,36 @@ if (localStorage.getItem('access') == null && localStorage.getItem('refresh') ==
                        return response.json();
                     })
                     .then((data) => {
+                        console.log(data)
                         if (data != 'Given token not valid for any token type'){
                             taskbox[0].innerHTML = '';
                             var refresh_icon = document.getElementById('refresh-icon').classList.remove('hidden')
  
                             if (data.length != 0){
+                                
                                 data.forEach(element => {
                                     if (element.complete == true){
-                                        taskbox[0].innerHTML = ''
+                                        
                                         taskbox[0].innerHTML += `    <div class="task-wrapper" data-position="{{task.pk}}">
                                         <div class="task-title">
-                                            <div class="task-complete-icon edit-icon" data-id=${element.id} data-action="edit"></div>
-                                            <i><s><a href="#">${element.name}</a></s></i>
+                                            <div class="task-complete-icon"></div>
+                                            <i><s><a>${element.name}</a></s></i>
                                         </div>
                                         <div class="task-controls">
-                                            <a class="delete-link edit-icon" data-id=${element.id} data-action="delete">&#215;</a>
-                                            <span class="handle edit-icon" data-id=${element.id} data-action="edit">&#x2713;</span>
-                                        </div>
+                                        <span class="handle">Created At ${element.created.slice(0,10)}</span>
+                                    </div>
+                                       
                                     </div>`
                                     }else{
                                     taskbox[0].innerHTML += `    <div class="task-wrapper" data-position="{{task.pk}}">
                                     <div class="task-title">
-                                        <div class="task-incomplete-icon edit-icon" data-id=${element.id} data-action="edit"></div>
-                                        <a href="{% url 'task-update' task.id %}">${element.name}</a> 
+                                        <div class="task-incomplete-icon"></div>
+                                        <a>${element.name}</a> 
                                     </div>
                                     <div class="task-controls">
-                                        <a class="delete-link edit-icon" data-id=${element.id} data-action="delete">&#215;</a>
-                                        <span class="handle edit-icon" data-id=${element.id} data-action="edit">&#x2713;</span>
+                                        <span class="handle">Created At ${element.created.slice(0,10)}</span>
                                     </div>
+                                 
                                 </div>`
                                 }
                                 })
@@ -378,33 +438,33 @@ if (localStorage.getItem('access') == null && localStorage.getItem('refresh') ==
                                        return response.json();
                                     })
                                     .then((data) => {
+                                        
                                         if (data != 'Given token not valid for any token type' ){
+                                            
                                             taskbox[0].innerHTML = ''
                                             var refresh_icon = document.getElementById('refresh-icon').classList.remove('hidden')
                                             if (data.length != 0){
                                                 data.forEach(element => {
                                                     if (element.complete == true){
-                                                        taskbox[0].innerHTML = ''
-                                                        taskbox[0].innerHTML += `    <div class="task-wrapper" data-position="{{task.pk}}">
+                                                        
+                                                        taskbox[0].innerHTML += `    <div class="task-wrapper">
                                                         <div class="task-title">
-                                                            <div class="task-complete-icon edit-icon" data-id=${element.id} data-action="edit"></div>
+                                                            <div class="task-complete-icon edit-icon"></div>
                                                             <i><s><a href="#">${element.name}</a></s></i>
                                                         </div>
                                                         <div class="task-controls">
-                                                            <a class="delete-link edit-icon" data-id=${element.id} data-action="delete">&#215;</a>
-                                                            <span class="handle edit-icon" data-id=${element.id} data-action="edit">&#x2713;</span>
-                                                        </div>
+                                                        <span class="handle">Created At ${element.created.slice(0,10)}</span>
+                                                    </div>
                                                     </div>`
                                                     }else{
-                                                    taskbox[0].innerHTML += `    <div class="task-wrapper" data-position="{{task.pk}}">
+                                                    taskbox[0].innerHTML += `    <div class="task-wrapper">
                                                     <div class="task-title">
-                                                        <div class="task-incomplete-icon edit-icon" data-id=${element.id} data-action="edit"></div>
-                                                        <a href="{% url 'task-update' task.id %}">${element.name}</a> 
+                                                        <div class="task-incomplete-icon edit-icon"></div>
+                                                        <a href="#">${element.name}</a> 
                                                     </div>
                                                     <div class="task-controls">
-                                                        <a class="delete-link edit-icon" data-id=${element.id} data-action="delete">&#215;</a>
-                                                        <span class="handle edit-icon" data-id=${element.id} data-action="edit">&#x2713;</span>
-                                                    </div>
+                                                    <span class="handle">Created At ${element.created.slice(0,10)}</span>
+                                                </div>
                                                 </div>`
                                                 }
 

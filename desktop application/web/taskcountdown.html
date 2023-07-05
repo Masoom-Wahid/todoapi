@@ -45,9 +45,27 @@
     <div class=" button-div center">   
         <button class="button" id="startbutton">Start</button>
         <button class="button" id="stopbtn">Save/Pause</button>
+        <button class="button" id="changetheme">Change Theme</button>
         <a href="task.html"><button class="button-back">Back</button></a>
+
     </div>
  
     <script src="js/taskcountdown.js" ></script>
+    <script>
+        const btn = document.querySelector('#changetheme');
+        btn.addEventListener('click', function() {
+          document.body.classList.toggle('dark-mode');
+          document.getElementsByClassName('circle-container')[0].classList.toggle('dark-mode')
+
+          var colon = document.getElementsByClassName('colon')
+          for (i=0;i<colon.length;i++){
+            colon[i].classList.toggle('dark-mode')
+          }
+          var buttons = document.getElementsByClassName("button")
+          for (i=0;i<buttons.length;i++){
+            buttons[i].classList.toggle('dark-mode')
+          }
+        });
+      </script>
 </body>
 </html>

@@ -1,4 +1,7 @@
+var start_button = document.getElementById('startbutton')
+var stop_button = document.getElementById('stopbtn')
 if ((sessionStorage.getItem('taskname')) && (sessionStorage.getItem('task_id'))  && (sessionStorage.getItem('time')) != undefined){
+    document.title = `${sessionStorage.getItem('taskname')} | Todo`
     var title = document.getElementsByClassName('tasktitle')[0].innerHTML += `${sessionStorage.getItem('taskname')}`
     session_time = sessionStorage.getItem('time')
     time = session_time.split(':')
@@ -13,6 +16,22 @@ if ((sessionStorage.getItem('taskname')) && (sessionStorage.getItem('task_id')) 
     s.innerHTML = `${sec}`
     var startTimer = null;
     document.getElementById('startbutton').addEventListener('click',function(){
+        
+        allButtons = document.getElementsByTagName('button')
+        if (stop_button.id != 'stopbtn'){
+            stop_button.id = 'stopbtn'
+            
+        }
+        for (i=0;i < allButtons.length;i++){
+            if (allButtons[i].id == 'startbutton'){
+                allButtons[i].style.background = 'red'
+            }
+            if (allButtons[i].id == 'stopbtn'){
+                allButtons[i].style.background = 'linear-gradient(45deg, rgba(0, 0, 139, 0.7) 0%, rgba(10, 10, 158, 0.7) 20%, rgba(30, 144, 255, 0.7) 50%, rgba(108, 166, 205, 0.7) 75%, rgba(65, 105, 225, 0.7) 100%)';
+            }
+        }
+        
+        document.getElementById('startbutton').removeAttribute('id')
         function startInterval(){
             startTimer = setInterval(function(){
                 timer();
@@ -100,6 +119,19 @@ if ((sessionStorage.getItem('taskname')) && (sessionStorage.getItem('task_id')) 
         return;
     }
     document.getElementById('stopbtn').addEventListener('click',function(){
+        start_button.id = 'startbutton'
+        
+        allButtons = document.getElementsByTagName('button')
+        for (i=0;i < allButtons.length;i++){
+            if (allButtons[i].id == 'stopbtn'){
+                allButtons[i].style.background = 'red'
+            }
+            if (allButtons[i].id == 'startbutton'){
+                allButtons[i].style.background = 'linear-gradient(45deg, rgba(0, 0, 139, 0.7) 0%, rgba(10, 10, 158, 0.7) 20%, rgba(30, 144, 255, 0.7) 50%, rgba(108, 166, 205, 0.7) 75%, rgba(65, 105, 225, 0.7) 100%)';
+            }
+        }
+        
+        document.getElementById('stopbtn').removeAttribute('id')
         clearInterval(startTimer)
         var hour_done = h.innerHTML
         var  minutes_done = m.innerHTML

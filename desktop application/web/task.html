@@ -5,7 +5,7 @@
     <meta name="description">
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>To Do Items</title>
+    <title>ToDo App</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -59,13 +59,13 @@
 
 <body id="main_body">
     <nav class="unauthenticatedbanner hidden">
-        <h1 style="color:red">U Are Not Logged In Ur Progress Will Not Be Saved <a class="nav-login" href="login.html">Login</a></h1>
+        <h1 style="color:blue">U Are Not Logged In Plz <a class="nav-login" id="nav-login" href="login.html" >Login -</a><a href="about.html" class="nav-login" id="nav-login">About Us</a></h1>
     </nav>
     <div class="container">
         <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
 <div class="header-bar">
     <div>
-        <p id="welcome" class="welcome" style="color:white;">Hello</p>
+        <p id="welcome" class="welcome" style="color:white;font-size: 25px;">Hello</p>
         <h3 id="trophies" style="margin-top: none;"></h3>
         <h4 id="activity_time"></h4>
         <h4 id="streak"></h4>
@@ -91,7 +91,7 @@
             <input type="submit" class="button" value="Search" id="datebutton">
         </form>
     </div>
-    <a   class="delete-link  hidden" id="refresh-icon" onclick="location.reload()">&#215;</a>
+    <a   class="delete-link  hidden" id="refresh-icon" onclick="reloadEverything()">&#215;</a>
     <a id="add-link" href="create.html">&#x2b;</a>
     
 </div>
@@ -150,9 +150,18 @@
         var custom_user_create = localStorage.getItem('date_joined').split('/')
         var date_create = custom_user_create[0]+'-'+custom_user_create[1]+'-'+custom_user_create[2]
         dateInput.setAttribute('min',date_create)
+
+
+        function reloadEverything(){
+            location.reload()
+            document.getElementById('q').value = ''
+        }
     </script>
     </div>
-
+    <footer>
+        <hr>
+      <p>&copy; Built By Mohammad Masoom Wahid <a target="_blank" href="https://github.com/Masoom-Wahid/todoapi">Github(Source Code),<a href="about.html">About Us</a></a> </p>
+    </footer>
 </body>
 </html>
 

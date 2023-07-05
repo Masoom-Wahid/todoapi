@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>About Us</title>
+    <link rel="stylesheet" href="css/about.css">
+  </head>
+  <body>
+    <header>
+      <h1>About Us</h1>
+      <button class="btn">Change Theme</button>
+      <a class="btn" style="text-decoration: none;" href="task.html"><-Back</a>
+    </header>
+    <hr>
+    <main>
+      <hr>
+      <p class="main-body">This Website Was Built By Using <a class="main-links" target="_blank" href="https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwjEmIOfzPf_AhUXif0HHUifCfwQjBB6BAgQEAE&url=https%3A%2F%2Fdocs.djangoproject.com%2F&usg=AOvVaw2hahrprdfnBm4XSyAwII_q&opi=89978449">Django</a> And Javascript Aside From Using HTML/CSS The Main Frameworks Which Are Used In This Website Are <a class="main-links" target="_blank" href="https://django-rest-framework-simplejwt.readthedocs.io/">SimpleJwt</a> and <a class="main-links"  target="_blank" href="https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwi7_t7xzPf_AhUd_7sIHSvxDo8QFnoECAoQAQ&url=https%3A%2F%2Fpypi.org%2Fproject%2Fdjango-cors-headers%2F&usg=AOvVaw09KrftF1UoM-yJgrwl0qS8&opi=89978449">Cors Headers</a>
+        For More Details And Source Code Go To My <a target="_blank" class="main-links" href="https://github.com/Masoom-Wahid/todoapi">Github</a>And See The Documentaions YourSelf. The Project Is Pretty Straight Forward And Requires U To Login Before Using It , In The Registeration System U Need To Use Ur Real Email Since It Will Be Verified,U Can't Do Anything If U Are Not Logged And Those Are Just Placeholders<p>
+      <hr>
+      <a  target="blank" href="img/about.JPG"><img style="width: 300px;height: 300px;" src="about.jpg" alt=""></a>
+
+    </main>
+    
+    <footer>
+        <hr>
+      <p>&copy; Built By Mohammad Masoom Wahid <a target="_blank" href="https://github.com/Masoom-Wahid/todoapi">Github(Source Code)</a> </p>
+    </footer>
+    <script>
+      const btn = document.querySelector('.btn');
+      btn.addEventListener('click', function() {
+        document.body.classList.toggle('dark-mode');
+        document.getElementsByClassName('main-body')[0].classList.toggle('dark-mode')
+      });
+    </script>
+  </body>
+</html>

@@ -5,7 +5,14 @@
 }
 
 html{
-    color: #eb796f;
+    color: blue;
+}
+body{
+    transition: all 0.3s ease;
+}
+body.dark-mode{
+    background-color: black;
+    color: white;
 }
 
 .center{
@@ -21,6 +28,9 @@ html{
     border-radius: 50%;
     width: 450px;
     height: 450px;
+}
+.circle-container.dark-mode{
+    border: 5px solid white;
 }
 .timer-container{
     width:330px;
@@ -50,7 +60,10 @@ html{
     margin-left: 0;
     margin-right: 0;
     padding-bottom: 15px;
-    color: #088b8b;
+    color: black;
+}
+.colon.dark-mode{
+    color: blue;
 }
 .button-div{
     margin-top: 10px;
@@ -61,11 +74,24 @@ html{
     padding-left: 50px;
     padding-bottom: 10px;
     margin-left: 5px;
-    background-color: #eb796f;
+    background: linear-gradient(45deg, rgba(0, 0, 139, 0.7) 0%, rgba(10, 10, 158, 0.7) 20%, rgba(30, 144, 255, 0.7) 50%, rgba(108, 166, 205, 0.7) 75%, rgba(65, 105, 225, 0.7) 100%);
     color: black;
     border: none;
     border-radius: 5%;
     cursor: pointer;
+}
+.button:hover{
+    background: black;
+    color: white;
+    transition: backgorund,color 0.3s;
+}
+.button.dark-mode{
+    background-color: blue;
+}
+.button.dark-mode:hover{
+    background: white;
+    color: black;
+    transition: backgorund,color 0.3s;
 }
 .button-back{
     padding-right: 50px;

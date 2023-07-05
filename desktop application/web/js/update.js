@@ -5,6 +5,7 @@ var error = document.getElementById('error')
 
 
 if ((sessionStorage.getItem('taskname') && sessionStorage.getItem('description') && sessionStorage.getItem('task_id')) != undefined){
+    document.title = `${sessionStorage.getItem('taskname')} | Todo`
     taskname.value = sessionStorage.getItem('taskname')
     description.value = sessionStorage.getItem('description')
     form.addEventListener('submit',e =>{

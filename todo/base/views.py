@@ -184,8 +184,11 @@ def edittask(request):
 @permission_classes([IsOwner])
 def search(request):
     q = request.data['q']
+
     task = Tasks.objects.filter(user = request.user)
+
     result = task.filter(name__icontains=q)
+
     serializer = SearchSerializer(result,many=True,context={'task':task})
     return Response(serializer.data)
 

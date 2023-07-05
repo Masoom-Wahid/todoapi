@@ -32,7 +32,7 @@ input {
     color: #fff;
     padding: 10px;
     border-radius: 5px 5px 0 0;
-    background: linear-gradient(90deg, #EEA390 0%, #EB796F 43%, #EB796F 100%);
+    background: linear-gradient(45deg, rgba(0, 0, 139, 0.7) 0%, rgba(10, 10, 158, 0.7) 20%, rgba(30, 144, 255, 0.7) 50%, rgba(108, 166, 205, 0.7) 75%, rgba(65, 105, 225, 0.7) 100%)
 }
 
 .header-bar a {
@@ -122,6 +122,10 @@ input {
     padding: 20px;
 }
 
+.edit-icon{
+    cursor: pointer;
+}
+
 @media screen and (max-width:320px) {
     #search-add-wrapper {
         padding: 10px;
@@ -147,6 +151,15 @@ label {
     opacity: 0.5;
 }
 
+footer{
+    text-align: center;
+
+}
+footer a{
+    color: red;
+    text-decoration: none;
+}
+
 .button {
     border: 1px solid #757575;
     background-color: #FFF;
@@ -168,7 +181,7 @@ label {
 }
 
 .nav-login{
-    color: black;
+    color:red;
     text-decoration: none;
 }
 
