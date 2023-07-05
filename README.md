@@ -8,7 +8,10 @@
 ```
 python -m venv venv
 ```
-after making ur virtual env u can move on by downloading the neccesary libaries wirtten in requirments.py , u can do so by wiriting 
+after making ur virtual env u should start it , u can do so by writing in the main directory:
+```
+.\venv\Scripts\activate
+```
 ```
 pip install -r requirments.txt
 ```
