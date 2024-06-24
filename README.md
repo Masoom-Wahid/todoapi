@@ -5,44 +5,31 @@
 ![4](https://github.com/Masoom-Wahid/todoapi/assets/121297100/6e126f58-a5f0-479e-a141-a234ee5b9e48)
 
 #This TodoList Was Made By Django And HTML/CSS and Js Only And No Front-End Framework, U Can Have Tasks For Each Day and other features Like Priority , TaskCountdown
+## Note: Registering New Users Will not Work unless u fill up ur google token and gmail in todoapi/todo/todo/secrets.py module.
 #To Start Using This U should start with making a virtual env, U Can Make One By Writing In the Main Directory :
 ```
 python -m venv venv
 ```
 after making ur virtual env u should start it , u can do so by writing in the main directory:
+### in windows
 ```
 .\venv\Scripts\activate
 ```
+### in unix based systems
+```
+source ./venv/bin/activate
+```
+### install the depencdancies of the project
 ```
 pip install -r requirments.txt
 ```
-if this failed for some reason just intsall each one of them individually by writing
-```
-pip install (the name mentioned in the txt file)
-```
 
-after downloading all of the libraries u need a django secret_key u can get one by going to ur cmd and :
-```
->>> from django.core.management.utils import get_random_secret_key
->>> get_random_secret_key()
-```
-after getting the secret key u can create a new file in the settings.py folder and writing in inside of it :
-```
-secret_key = (ur secret key)
-```
-
-u will need ur email and access key being used for the smtp application , if u have one write them in the secret.py as :
-```
-EMAIL_HOST_USER = (your email)
-EMAIL_HOST_PASSWORD = (your key)
-```
-Note: all of these are neccecasry for running the django server 
 after all of this go to manage.py folder and run in the cmd :
 first u  will make ur database with:
 ```
 python manage.py makemigrations
 ```
-then u migrate all of ur tables with :
+then u migrate ur database with :
 ```
 python manage.py migrate
 ```
@@ -56,8 +43,11 @@ python manage.py runserver
 ```
 if all things did go well ur django server should run without any problem 
 
-u are advised to run the front on a server , u can do so with VSCODE's local server running 
-after running the server u should see smth like this :
+## Frontend
+### for frontend part just to the web directory located in "todoapi/desktop application/web" and run
+```
+python -m http.server 5500
+```
 
 ![1](https://github.com/Masoom-Wahid/todoapi/assets/121297100/438b9109-94a4-4810-a925-2dfed2a0321c)
 
