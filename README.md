@@ -49,6 +49,8 @@ if all things did go well ur django server should run without any problem
 python -m http.server 5500
 ```
 
+### now go to 127.0.0.1:5500/login.html
+
 ![1](https://github.com/Masoom-Wahid/todoapi/assets/121297100/438b9109-94a4-4810-a925-2dfed2a0321c)
 
 u can login by that same username and password u create earlier.
